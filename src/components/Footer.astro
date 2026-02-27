@@ -5,13 +5,21 @@ import Social from './Social.astro';
 <style>
   footer {
     display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 4rem;
+    padding: 2rem 0;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  :global(.dark) footer {
+    border-top: 1px solid #1e293b;
   }
 </style>
 
 <footer>
-  <Social platform="twitter" username="astrodotbuid"></Social>
-  <Social platform="github" username="withastro"></Social>
-  <Social platform="youtube" username="astrodotbuid"></Social>
+  <Social platform="twitter" username="astrodotbuild" />
+  <Social platform="github" username="withastro" />
+  <Social platform="youtube" username="astrodotbuild" />
 </footer>

@@ -1,77 +1,130 @@
+/* 基本設定 */
+* {
+  box-sizing: border-box;
+}
+
 html {
   background-color: #f1f5f9;
-  font-family: sans-serif;
+  font-family: 'Helvetica Neue', Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  color: #1e293b;
+  scroll-behavior: smooth; /* スクロールを滑らかに */
 }
 
 body {
   margin: 0 auto;
   width: 100%;
   max-width: 80ch;
-  padding: 1rem;
-  line-height: 1.5;
-}
-
-* {
-  box-sizing: border-box;
+  padding: 2rem 1.5rem; /* 余白を少し広めに */
+  line-height: 1.6;
 }
 
 h1 {
-  margin: 1rem 0;
+  margin: 2rem 0 1rem;
   font-size: 2.5rem;
+  text-align: center; /* タイトルも中央に */
 }
 
-/* ナビゲーションのスタイル */
+/* --- ナビゲーションのスタイル --- */
+
+/* モバイル用のボタン（ハンバーガーメニュー等） */
 .menu {
+  display: block;
+  margin: 0 auto 1rem; /* ボタン自体を中央に */
   background-color: #0d0950;
   border: none;
+  border-radius: 4px;
   color: #fff;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: bold;
-  padding: 5px 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: opacity 0.2s;
 }
 
+.menu:active {
+  opacity: 0.8;
+}
+
+/* リンク全体のコンテナ */
 .nav-links {
   width: 100%;
-  display: none;
+  display: none; /* デフォルトは非表示（モバイル） */
   margin: 0;
+  padding: 0;
+  background-color: #fff; /* モバイル時はカードっぽく */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
 }
 
 .nav-links a {
   display: block;
   text-align: center;
-  padding: 10px 0;
+  padding: 12px 0;
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bold;
   text-transform: uppercase;
   color: #0d0950;
+  transition: all 0.3s ease; /* アニメーション追加 */
 }
 
 .nav-links a:hover,
 .nav-links a:focus {
   background-color: #ff9776;
+  color: #fff;
 }
 
+/* メニューが開いている時 */
 :has(.menu[aria-expanded="true"]) .nav-links {
-  display: unset;
+  display: block;
 }
 
-
+/* --- PCレイアウト (636px以上) --- */
 @media screen and (min-width: 636px) {
+  .menu {
+    display: none; /* PCではボタンを隠す */
+  }
+
   .nav-links {
-    margin-left: 5em;
-    display: block;
+    display: flex;       /* 横並びにする */
+    justify-content: center; /* 左右中央に配置 */
+    gap: 10px;          /* リンク間の隙間 */
+    background: none;    /* 背景を消す */
+    box-shadow: none;
     position: static;
-    width: auto;
-    background: none;
   }
 
   .nav-links a {
     display: inline-block;
-    padding: 15px 20px;
+    padding: 10px 20px;
+    border-radius: 20px; /* 角丸でボタンっぽく */
   }
+}
 
-  .menu {
-    display: none;
-  }
+/* --- ダークモード --- */
+html.dark {
+  background-color: #0d0950;
+  color: #fff;
+}
+
+.dark .menu {
+  background-color: #fff;
+  color: #0d0950;
+}
+
+.dark .nav-links {
+  background-color: #1e293b; /* ダークモードのモバイル背景 */
+}
+
+.dark .nav-links a {
+  color: #fff;
+}
+
+.dark .nav-links a:hover {
+  background-color: #ff9776;
+  color: #0d0950;
+}
+
+.dark a {
+  color: #ff9776;
 }
